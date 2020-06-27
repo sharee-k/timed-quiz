@@ -5,7 +5,11 @@
 // WHEN the game is over, I can save my initials and score
 
 var startButtonEl = document.querySelector("#start-btn");
-var questionsEl = document.querySelector("question");
+var timerEl = document.querySelector("#timer");
+var questionsEl = document.querySelector("#question");
+var answersEl = document.querySelector("#answer-btn");
+
+let timer = 200
 
 var questions = [
     {
@@ -53,7 +57,7 @@ var questions = [
             {text: 'for (i = 0; i < myLoop.length; i++)', correct: true}
         ]
     }
-]
+];
 
 var startQuiz = function() {
     console.log("Quiz Started")
@@ -63,16 +67,27 @@ var startQuiz = function() {
 
 
 var displayQuestion = function() {
+    for (var i = 0; i < questions.length; i++); {
+        console.log(questions);   
+    }
 
-}
+};
 
 var startTimer = function() {
-
+    setInterval(function() {
+        if(timer <= 0 ) {
+            clearInterval(timer=0)
+        }
+        timerEl.innerHTML = timer
+        timer -=1
+    }, 1000)
 }
 
 var selectAnswer = function() {
+    console.log("You are correct");
 
 }
 
 
 startButtonEl.addEventListener("click", startQuiz);
+answersEl.addEventListener("click", selectAnswer);

@@ -28,7 +28,7 @@ body {
     justify-content: space-between;
 }
 
-.question {
+#question {
     text-align: center;
 }
 
