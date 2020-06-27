@@ -39,11 +39,6 @@ body {
     margin: 20px;
 }
 
-.quiz-footer {
-    display: flex;
-    justify-content: space-between;
-}
-
 .btn {
     padding: 10px 5px;
     font-family: 'Montserrat', sans-serif;
