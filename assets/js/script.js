@@ -12,13 +12,11 @@ var optionButtonEl = document.querySelector(".option-btn");
 var options = Array.from(document.getElementsByClassName("option-text"));
 
 var timer = 100;
-var score = 0;
+var scoreBonus = 10;
 
 var currentQuestion = {};
 var questionCounter = 0;
 var availableQuestions = [];
-
-scoreEl.innerHTML = score;
 
 var questions = [
     {
@@ -83,6 +81,9 @@ var startTimer = function() {
 };
 
 var getQuestion = function() {
+    if (availableQuestions.length === 0 || timer === 0) {
+        return endGame();
+    };
     questionCounter++;
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex];
@@ -96,11 +97,16 @@ var getQuestion = function() {
 
 var selectAnswer = function(answer) {
     if (answer === currentQuestion.answer) {
-    score = score + 10;
+    addScore(scoreBonus);
     } else {
         timer -= 10;
     }
     setTimeout(getQuestion, 1000);
+};
+
+var addScore = function(num) {
+    score += num;
+    scoreEl.innerHTML = score;
 };
 
 var endGame = function() {
