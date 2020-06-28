@@ -32,15 +32,24 @@ body {
     text-align: center;
 }
 
-.answer-grid {
+.option-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px;
 }
 
+.option-container {
+    display: flex;
+    justify-content: left;
+}
+
+.option-text {
+    padding-left: 20px;
+}
+
 .btn {
-    padding: 10px 5px;
+    padding: 10px 20px;
     font-family: 'Montserrat', sans-serif;
     background-color: rgb(242, 218, 253);
     border-color: rgb(235, 190, 253);
@@ -50,4 +59,12 @@ body {
 
 .btn:hover {
     border-color: rgb(31, 0, 46);
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
 }
