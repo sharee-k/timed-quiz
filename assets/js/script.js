@@ -84,7 +84,7 @@ var startTimer = function() {
 
 var getQuestion = function() {
     if (availableQuestions.length === 0 || timer === 0) {
-        return endGame();
+        return endQuiz();
     };
     questionCounter++;
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -111,8 +111,8 @@ var addScore = function(num) {
     scoreEl.innerHTML = score;
 };
 
-var endGame = function() {
-    window.prompt("Game Over. Your score is " + score + "! Please enter your name to save your score.");
+var endQuiz = function() {
+    window.prompt("The quiz is over! Your score is " + score + "! Please enter your initials to save your score.");
     timer = 0;
     score = score;
     if (highscore !== null) {
