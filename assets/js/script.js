@@ -7,12 +7,15 @@
 var startButtonEl = document.querySelector("#start-btn");
 var timerEl = document.querySelector(".timer");
 var scoreEl = document.querySelector(".score");
+var highscoreEl = document.querySelector(".highscore");
 var questionsEl = document.querySelector("#question");
 var optionButtonEl = document.querySelector(".option-btn");
 var options = Array.from(document.getElementsByClassName("option-text"));
 
 var timer = 100;
+var score = 0;
 var scoreBonus = 10;
+var highscore = localStorage.getItem("highscore");
 
 var currentQuestion = {};
 var questionCounter = 0;
@@ -73,11 +76,10 @@ var startTimer = function() {
     var timerInterval = setInterval(function() {
         if(timer <= 0 ) {
             clearInterval(timerInterval)
-            //endGame();
-        }
-        timerEl.innerHTML = timer
-        timer -=1
-    }, 1000)
+        };
+        timerEl.innerHTML = timer;
+        timer -=1;
+    }, 1000);
 };
 
 var getQuestion = function() {
@@ -100,7 +102,7 @@ var selectAnswer = function(answer) {
     addScore(scoreBonus);
     } else {
         timer -= 10;
-    }
+    };
     setTimeout(getQuestion, 1000);
 };
 
@@ -110,7 +112,17 @@ var addScore = function(num) {
 };
 
 var endGame = function() {
-
+    window.prompt("Game Over. Your score is " + score + "! Please enter your name to save your score.");
+    timer = 0;
+    score = score;
+    if (highscore !== null) {
+        if (score > highscore) {
+            localStorage.setItem("highscore", score);
+        };
+    } else {
+        localStorage.setItem("highscore", score);
+    };
+    highscoreEl.innerHTML = highscore;
 };
 
 startButtonEl.addEventListener("click", startQuiz);
